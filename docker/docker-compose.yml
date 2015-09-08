@@ -1,0 +1,16 @@
+mongodb26:
+  restart: always
+  image: mongo:2.6
+  ports:
+    - 27017:27017
+      
+web:
+  image: toubiweb/angular-tp
+  command: sleep infinity
+  links:
+    - mongodb26:mongodb
+  volumes:
+    - .:/home/user/tp-angular
+  ports:
+    - 3000:3000
+    - 35729:35729

@@ -17,12 +17,12 @@ describe('form password service', function () {
 
     it('medium password (8 characters) should result to strongness 5', function () {
        var strongness = passwordService.checkStrongness('12345678');
-        expect(strongness).toEqual(3);
+        expect(strongness).toEqual(5);
     });
 
     it('long password (> 12 characters) should result to strongness 10', function () {
        var strongness = passwordService.checkStrongness('123456789012');
-        expect(strongness).toEqual(5);
+        expect(strongness).toEqual(10);
     });
 
 });

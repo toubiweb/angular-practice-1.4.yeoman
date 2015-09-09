@@ -6,7 +6,7 @@
     angular.module('tpAngular').config(configureRoutes);
 
     /** @ngInject */
-    function configureRoutes($locationProvider, $stateProvider, $urlRouterProvider) {
+    function configureRoutes($stateProvider) {
 
         // states configuration
         $stateProvider

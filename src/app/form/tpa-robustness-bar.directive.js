@@ -20,7 +20,7 @@
 
         var vm = this;
 
-        console.error('Hello from TpaRobustnessBarController');
+        console.info('Hello from TpaRobustnessBarController. Password: "%s"', vm.password);
 
         // scope attributes
 

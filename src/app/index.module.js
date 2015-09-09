@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    // define application module and dependencies
+    // laxcomma define application module and dependencies
     angular.module('tpAngular', [
         'ngAnimate' // CSS-based animations: https://code.angularjs.org/1.4.5/docs/api/ngAnimate
         ,'ngCookies' // cookies management: https://code.angularjs.org/1.4.5/docs/api/ngCookies

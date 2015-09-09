@@ -23,31 +23,30 @@ describe('Test directive tpa-robustness-bar', function () {
     it('tpa-robustness-bar TEST', function () {
 
         // compile the template
-        var element = angular.element("<div tpa-robustness-bar password=\"passwordModel\"></div>");
+        var element = angular.element("<div tpa-robustness-bar password=\"passModel\"></div>");
         var template = $compile(element)($scope);
- /*     
-        $scope.tags = ['test', 'truc'];
         
-        console.log(element.controller('TpaRobustnessBarController'));
-console.log(template);
-        
-        // get controller
-        var vm = element.controller('vm');*/
-        
-        
-        // update the scope
-        $scope.passwordModel = 'passWord123456';
-
+        // update root scope with strong password
+         $scope.passModel = 'Robu5tP@ssw0rd';
         // run a $digest cycle to update your template with new data
         $rootScope.$digest();
+        
+        // check the progressbar to contain progress-bar-success class
+        expect(template.find('div').html().trim()).toContain('progress-bar-success');
+        
+        // update root scope with poor password
+        $scope.passModel = 'poorpassword';
+        
+         // run a $digest cycle to update your template with new data
+        $rootScope.$digest();
 
-        // Render the template as a string
+       // Render the template as a string
         var templateAsHtml = template.html();
 
         console.log(templateAsHtml);
         
-        // fake check
-        expect(template.find('div').text()).toContain('toto');
+        // check the progressbar to contain progress-bar-danger class
+        expect(template.find('div').html().trim()).toContain('progress-bar-danger');
 
     });
 });

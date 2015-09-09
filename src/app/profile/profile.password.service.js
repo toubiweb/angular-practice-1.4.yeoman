@@ -12,7 +12,13 @@
 
         function checkStrongness(password) {
 
-            // TODO
+            if (!password || password.length < 4) {
+                return 1;
+            } else if (password.length >= 4 && password.length < 10) {
+                return 5;
+            } else {
+                return 10;
+            }
         }
 
         return service;

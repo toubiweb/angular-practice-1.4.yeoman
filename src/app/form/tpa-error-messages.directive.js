@@ -11,9 +11,7 @@
                 formName: '@',
                 attributeName: '@'
             },
-            bindToController:{
-                true
-            }
+            bindToController: true,
             controller: TpaErrorMessagesController
         };
     }

@@ -3,7 +3,7 @@
 
     angular.module('tpAngular.form').directive('tpaErrorMessages', tpaErrorMessages);
 
-    function tpaErrorMessages($parse) {
+    function tpaErrorMessages() {
         return {
             templateUrl: 'app/form/tpa-error-messages.directive.html',
             controllerAs: 'vm',

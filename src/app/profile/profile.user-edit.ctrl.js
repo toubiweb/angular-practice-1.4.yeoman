@@ -3,7 +3,7 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileUserEditController', TpaProfileUserEditController);
 
-    function TpaProfileUserEditController($scope, $log, toastr) {
+    function TpaProfileUserEditController($state, $stateParams, $scope, $log, toastr) {
 
         // view model
         var vm = this;
@@ -40,7 +40,7 @@
         function reset() {
 
             vm.user = {
-                firstName: 'John',
+                firstName: $stateParams.firstName,
                 lastName: null,
                 email: 'john.smith@sqli.com',
                 birthdate: moment("01/07/1980", "DD/MM/YYYY").toDate(),
@@ -77,8 +77,10 @@
             userForm.$setSubmitted();
 
             if (userForm.$valid) {
-                // TODO
                 toastr.success('User successfully saved.');
+                $state.go('edit-password', {
+                    firstName: vm.user.firstName
+                });
             }
         }
 

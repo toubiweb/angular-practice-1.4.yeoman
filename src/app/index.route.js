@@ -6,28 +6,35 @@
     angular.module('tpAngular').config(configureRoutes);
 
     /** @ngInject */
-    function configureRoutes($stateProvider, $urlRouterProvider) {
+    function configureRoutes($locationProvider, $stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/');
+         // HTML5 mode
+        // $locationProvider.html5Mode(true);
 
-        // routes configuration
+        // states configuration
         $stateProvider
-            .state('profile-user-edit', {
-                url: '/',
+            .state('edit-user', {
+                url: "/:firstName",
                 templateUrl: 'app/profile/profile.user-edit.html',
                 controller: 'TpaProfileUserEditController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                params: {
+                    firstName: {
+                        // default value
+                        value: 'Peter'
+                    }
+                }
             })
-            .state('profile-password-edit', {
-                url: '/profile/password/edit',
+            .state('edit-password', {
+                url: "/profile/password/edit/",
                 templateUrl: 'app/profile/profile.password-edit.html',
                 controller: 'TpaProfilePasswordEditController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                params: {
+                    // additional paramter (not in url) & default value
+                    firstName: 'Peter'
+                }
             });
-
-        // default route
-        $urlRouterProvider.otherwise('/profile/user/edit');
-
     }
 
 })();

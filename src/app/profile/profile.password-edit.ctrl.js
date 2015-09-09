@@ -4,15 +4,12 @@
     angular.module('tpAngular.profile').controller('TpaProfilePasswordEditController', TpaProfilePasswordEditController);
 
     /** @ngInject */
-    function TpaProfilePasswordEditController($stateParams, tpaPasswordService) {
+    function TpaProfilePasswordEditController($stateParams) {
 
         // view model
         var vm = this;
         vm.user = {};
         vm.firstName = $stateParams.firstName;
-
-        vm.getStrongnessPercentage = getStrongnessPercentage;
-        vm.getProgressClass = getProgressClass;
 
         // public attributes
 
@@ -23,22 +20,6 @@
 
         function init() {
 
-        }
-
-        function getStrongnessPercentage() {
-            var strongness = tpaPasswordService.checkStrongness(vm.user.password);
-            return 10 * strongness;
-        }
-
-        function getProgressClass() {
-            var p = getStrongnessPercentage();
-            if (p < 50) {
-                return 'progress-bar-danger';
-            } else if (p < 80) {
-                return 'progress-bar-warning';
-            } else {
-                return 'progress-bar-success';
-            }
         }
 
         return vm;

@@ -1,5 +1,7 @@
 <div class="robustness-bar">
-
-    <span>Your password: {{ vm.password }}</span>
-
+    <div class="progress">
+        <div class="progress-bar" ng-class="vm.getProgressClass()" role="progressbar" aria-valuenow="{{ vm.getStrongnessPercentage() }}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: vm.getStrongnessPercentage() + '%' }">
+            {{ vm.password }} {{ vm.getStrongnessPercentage() }}%
+        </div>
+    </div>
 </div>

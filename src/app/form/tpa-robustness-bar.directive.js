@@ -15,25 +15,41 @@
         };
     }
 
-    function TpaRobustnessBarController($log) {
+    function TpaRobustnessBarController(tpaPasswordService) {
 
         var vm = this;
-
-        $log.info('Hello from TpaRobustnessBarController. Password: "%s"', vm.password);
 
         // scope attributes
 
         // scope methods
+        vm.getStrongnessPercentage = getStrongnessPercentage;
+        vm.getProgressClass = getProgressClass;
 
         // init method
         init();
 
         function init() {
 
+        }
 
+        function getStrongnessPercentage() {
+            var strongness = tpaPasswordService.checkStrongness(vm.password);
+            return 10 * strongness;
+        }
+
+        function getProgressClass() {
+            var p = getStrongnessPercentage();
+            if (p < 50) {
+                return 'progress-bar-danger';
+            } else if (p < 80) {
+                return 'progress-bar-warning';
+            } else {
+                return 'progress-bar-success';
+            }
         }
 
         return vm;
     }
-    
+
+
 })();

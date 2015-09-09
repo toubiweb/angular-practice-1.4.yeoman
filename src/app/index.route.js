@@ -6,7 +6,7 @@
     angular.module('tpAngular').config(configureRoutes);
 
     /** @ngInject */
-    function configureRoutes($stateProvider, $urlRouterProvider) {
+    function configureRoutes($stateProvider) {
 
         $stateProvider
             .state('edit-user', {

@@ -13,6 +13,7 @@
         function checkStrongness(password) {
 
             // TODO
+            return 1;
         }
 
         return service;

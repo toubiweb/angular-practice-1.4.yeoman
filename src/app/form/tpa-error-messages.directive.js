@@ -7,10 +7,13 @@
         return {
             templateUrl: 'app/form/tpa-error-messages.directive.html',
             controllerAs: 'vm',
-            bindToController: {
+            scope: {
                 formName: '@',
                 attributeName: '@'
             },
+            bindToController:{
+                true
+            }
             controller: TpaErrorMessagesController
         };
     }

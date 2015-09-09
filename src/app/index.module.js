@@ -12,7 +12,7 @@
         ,'mgcrea.ngStrap' // AngularJS directives for Bootstrap:  https://github.com/mgcrea/angular-strap
         ,'toastr' // angular notifications: https://github.com/Foxandxss/angular-toastr
         ,'tpAngular.profile' // profile
-        
+        ,'tpAngular.form' // form
     ]);
 
 })();

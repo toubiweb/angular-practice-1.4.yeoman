@@ -27,7 +27,6 @@
 
         function getStrongnessPercentage() {
             var strongness = tpaPasswordService.checkStrongness(vm.user.password);
-            console.info('Strongness: %s', strongness);
             return 10 * strongness;
         }
 

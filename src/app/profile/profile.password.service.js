@@ -36,7 +36,7 @@
 
             var strongness = 0;
 
-            if (password.match(/\d+/g) != null) {
+            if (password.match(/\d+/g) !== null) {
                 // has numbers
                 strongness++;
             }

@@ -4,11 +4,10 @@
 
     angular.module('tpAngular.form').directive('tpaRobustnessBar', tpaRobustnessBar);
 
-    function tpaRobustnessBar($parse) {
+    function tpaRobustnessBar() {
         return {
             templateUrl: 'app/form/tpa-robustness-bar.directive.html',
             controllerAs: 'vm',
-            scope: true,
             bindToController: {
                 password: '='
             },
@@ -16,11 +15,11 @@
         };
     }
 
-    function TpaRobustnessBarController() {
+    function TpaRobustnessBarController($log) {
 
         var vm = this;
 
-        console.info('Hello from TpaRobustnessBarController. Password: "%s"', vm.password);
+        $log.info('Hello from TpaRobustnessBarController. Password: "%s"', vm.password);
 
         // scope attributes
 

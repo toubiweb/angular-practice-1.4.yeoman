@@ -3,13 +3,13 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileUserEditController', TpaProfileUserEditController);
 
-    function TpaProfileUserEditController($scope, $state, $stateParams, $log, toastr) {
+    function TpaProfileUserEditController($scope, $state, $stateParams, $log, toastr, moment) {
 
         // view model
         var vm = this;
 
         // public attributes
-        vm.user;
+        vm.user = null;
 
         // public methods
         vm.getFullName = getFullName;

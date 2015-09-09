@@ -8,6 +8,7 @@
 
         // view model
         var vm = this;
+        vm.firstName = $stateParams.firstName;
 
         // public attributes
 

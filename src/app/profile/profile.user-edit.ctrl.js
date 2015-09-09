@@ -77,8 +77,10 @@
             userForm.$setSubmitted();
 
             if (userForm.$valid) {
-                // TODO
                 toastr.success('User successfully saved.');
+                $state.go('edit-password', {
+                    firstName: vm.user.firstName
+                });
             }
         }
 

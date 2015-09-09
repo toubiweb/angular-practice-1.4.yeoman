@@ -8,9 +8,6 @@
     /** @ngInject */
     function configureRoutes($locationProvider, $stateProvider, $urlRouterProvider) {
 
-         // HTML5 mode
-        // $locationProvider.html5Mode(true);
-
         // states configuration
         $stateProvider
             .state('edit-user', {

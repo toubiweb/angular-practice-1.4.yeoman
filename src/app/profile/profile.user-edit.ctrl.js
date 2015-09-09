@@ -3,7 +3,7 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileUserEditController', TpaProfileUserEditController);
 
-    function TpaProfileUserEditController($state, $stateParams, $scope, $log, toastr) {
+    function TpaProfileUserEditController($scope, $state, $stateParams, $log, toastr) {
 
         // view model
         var vm = this;

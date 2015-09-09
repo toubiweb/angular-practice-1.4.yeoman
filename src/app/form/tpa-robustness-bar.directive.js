@@ -8,9 +8,10 @@
         return {
             templateUrl: 'app/form/tpa-robustness-bar.directive.html',
             controllerAs: 'vm',
-            bindToController: {
+            scope: {
                 password: '='
             },
+            bindToController: true,
             controller: TpaRobustnessBarController
         };
     }

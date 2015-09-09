@@ -4,7 +4,7 @@
     angular.module('tpAngular.profile').controller('TpaProfilePasswordEditController', TpaProfilePasswordEditController);
 
     /** @ngInject */
-    function TpaProfilePasswordEditController($scope) {
+    function TpaProfilePasswordEditController($stateParams) {
 
         // view model
         var vm = this;

@@ -11,7 +11,7 @@ describe('Test directive tpa-robustness-bar', function () {
     beforeEach(module('tpAngular.form'));
      
     // load templates
-    beforeEach(module('tpAngular'));
+    beforeEach(module('ngHtml2JsPreprocessor'));
 
     beforeEach(inject(function (_$compile_, _$rootScope_) {
         // the injector unwraps the underscores (_) from around the parameter names when matching
@@ -25,20 +25,18 @@ describe('Test directive tpa-robustness-bar', function () {
         // compile the template
         var element = angular.element("<div tpa-robustness-bar password=\"passwordModel\"></div>");
         var template = $compile(element)($scope);
+ /*     
+        $scope.tags = ['test', 'truc'];
         
-        // FIXME
-        return;
-        
+        console.log(element.controller('TpaRobustnessBarController'));
 console.log(template);
         
         // get controller
-        var vm = element.controller('vm');
+        var vm = element.controller('vm');*/
         
-        
-        console.log(element);
         
         // update the scope
-        vm.passwordModel = 'passWord123456';
+        $scope.passwordModel = 'passWord123456';
 
         // run a $digest cycle to update your template with new data
         $rootScope.$digest();
@@ -46,8 +44,10 @@ console.log(template);
         // Render the template as a string
         var templateAsHtml = template.html();
 
+        console.log(templateAsHtml);
+        
         // fake check
-        expect(template.find('.robustness-bar').text()).toContain('toto');
+        expect(template.find('div').text()).toContain('toto');
 
     });
 });

@@ -20,6 +20,8 @@
 
         var vm = this;
 
+        console.error('Hello from TpaRobustnessBarController');
+
         // scope attributes
 
         // scope methods

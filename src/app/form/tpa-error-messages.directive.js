@@ -20,7 +20,7 @@
         var vm = this;
 
         // scope attributes
-
+        
         // scope methods
 
         // init method

@@ -20,7 +20,7 @@
             $log = _$log_;
         }));
 
-        it('tpa-robustness-bar TEST', function () {
+        it('tpa-robustness-bar strong', function () {
 
             // compile the template
             var element = angular.element("<div tpa-robustness-bar password=\"passModel\"></div>");
@@ -30,16 +30,36 @@
             $scope.passModel = 'Robu5tP@ssw0rd';
             // run a $digest cycle to update your template with new data
             $rootScope.$digest();
-
             // check the progressbar to contain progress-bar-success class
             expect(template.find('div').html().trim()).toContain('progress-bar-success');
 
-            // update root scope with poor password
-            $scope.passModel = 'poorpassword';
+        });
 
+        it('tpa-robustness-bar medium', function () {
+
+            // compile the template
+            var element = angular.element("<div tpa-robustness-bar password=\"passModel\"></div>");
+            var template = $compile(element)($scope);
+
+            // update root scope with weak password
+            $scope.passModel = 'Medium';
             // run a $digest cycle to update your template with new data
             $rootScope.$digest();
+            // check the progressbar to contain progress-bar-danger class
+            expect(template.find('div').html().trim()).toContain('progress-bar-warning');
 
+        });
+
+        it('tpa-robustness-bar weak', function () {
+
+            // compile the template
+            var element = angular.element("<div tpa-robustness-bar password=\"passModel\"></div>");
+            var template = $compile(element)($scope);
+
+            // update root scope with weak password
+            $scope.passModel = 'weak';
+            // run a $digest cycle to update your template with new data
+            $rootScope.$digest();
             // check the progressbar to contain progress-bar-danger class
             expect(template.find('div').html().trim()).toContain('progress-bar-danger');
 

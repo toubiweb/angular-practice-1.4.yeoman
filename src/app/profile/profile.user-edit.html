@@ -1,7 +1,13 @@
 <div class="container profile-user-edit">
 
     <div>
-        <a class="link" ui-sref="profile-password-edit">Edit password</a>
+        <a class="link" ui-sref="edit-password({firstName: userVm.user.firstName})">Edit current user's password</a>
+    </div>
+    <div>
+        <a class="link" ui-sref="edit-user({firstName: 'Mehdi'})">Edit Mehdi's user profile</a>
+    </div>
+    <div>
+        <a class="link" ui-sref="edit-user({firstName: 'Anne'})">Edit Anne's user profile</a>
     </div>
 
     <div class="page">

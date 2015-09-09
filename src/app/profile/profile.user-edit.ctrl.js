@@ -40,7 +40,7 @@
         function reset() {
 
             vm.user = {
-                firstName: 'John',
+                firstName: $stateParams.firstName,
                 lastName: null,
                 email: 'john.smith@sqli.com',
                 birthdate: moment("01/07/1980", "DD/MM/YYYY").toDate(),

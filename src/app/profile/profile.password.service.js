@@ -48,7 +48,7 @@
                 // has uppercase
                 strongness++;
             }
-            if (password.match(/[_\W0-9]/)) {
+            if (password.match(/[_\W]/)) {
                 // has special characters
                 strongness += 2;
             }

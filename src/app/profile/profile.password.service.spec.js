@@ -26,5 +26,45 @@
             expect(strongness).toEqual(5);
         });
 
+        it('lowercase password should result to strongness 1', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('dsgsfghdfsgdfg');
+            expect(strongness).toEqual(1);
+        });
+
+        it('UPPERCASE password should result to strongness 1', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('SDQFSDFQQSDFSQDF');
+            expect(strongness).toEqual(1);
+        });
+
+        it('special characters password should result to strongness 2', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('@_-()');
+            expect(strongness).toEqual(2);
+        });
+
+        it('number characters password should result to strongness 1', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('576756565');
+            expect(strongness).toEqual(1);
+        });
+
+        it('number + special characters password should result to strongness 3', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('5767@56565');
+            expect(strongness).toEqual(3);
+        });
+
+        it('number + uppercase + special characters password should result to strongness 4', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('5767@SDFSDF');
+            expect(strongness).toEqual(4);
+        });
+
+        it('lowercase + uppercase + special characters password should result to strongness 4', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('sdfsdf@SDFSDF');
+            expect(strongness).toEqual(4);
+        });
+
+        it('lowercase + uppercase + number password should result to strongness 3', function () {
+            var strongness = tpaPasswordService.checkStrongnessType('sdfsdf0000SDFSDF');
+            expect(strongness).toEqual(3);
+        });
+
     });
 })();

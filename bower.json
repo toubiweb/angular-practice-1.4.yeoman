@@ -10,6 +10,7 @@
     "angular-toastr": "~1.4.1",
     "angular-touch": "~1.4.5",
     "angular-ui-router": "~0.2.15",
+    "angular-validation-match": "~1.5.2",
     "animate.css": "~3.4.0",
     "bootstrap-sass-official": "~3.3.4",
     "components-font-awesome": "~4.4.0",

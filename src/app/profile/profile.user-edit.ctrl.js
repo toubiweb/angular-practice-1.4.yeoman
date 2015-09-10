@@ -3,7 +3,7 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileUserEditController', TpaProfileUserEditController);
 
-    function TpaProfileUserEditController($scope, $state, $stateParams, $log, toastr, moment) {
+    function TpaProfileUserEditController($scope, $state, $stateParams, $log, $timeout, toastr, moment, tpaResourceMemberService) {
 
         // view model
         var vm = this;
@@ -41,15 +41,31 @@
 
         function reset() {
 
-            vm.user = {
-                firstName: $stateParams.firstName,
-                lastName: null,
-                email: 'john.smith@sqli.com',
-                birthdate: moment("01/07/1996", "DD/MM/YYYY").toDate(),
-                gender: 'male',
-                employed: true,
-                salary: 9000
-            };
+            if ($stateParams.memberId) {
+
+                tpaResourceMemberService.get({
+                    memberId: $stateParams.memberId
+                }, function (member) {
+                    vm.user = member;
+                }, function (err) {
+                    $log.error(err);
+                    // display an error message
+                    toastr.error('An error occured retrieving user.');
+                    $timeout(function () {
+                        // redirect to list after 2s timeout
+                        $state.go('view-members');
+                    }, 2000);
+                });
+
+            } else {
+                // display an error message
+                toastr.error('Invalid URL.');
+                $timeout(function () {
+                    // redirect to list after 2s timeout
+                    $state.go('view-members');
+                }, 2000);
+            }
+
         }
 
         function getAgeInYears() {
@@ -95,7 +111,7 @@
             } else {
                 minSalary = 8000;
             }
-            
+
             return minSalary;
         }
 

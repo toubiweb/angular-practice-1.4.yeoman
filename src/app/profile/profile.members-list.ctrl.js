@@ -3,13 +3,14 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileMembersListController', TpaProfileMembersListController);
 
-    function TpaProfileMembersListController($scope, $state, $stateParams, $log, toastr, tpaResourceMemberService) {
+    function TpaProfileMembersListController($state, toastr, tpaResourceMemberService) {
 
         // view model
         var vm = this;
 
         // public attributes
         vm.members = [];
+        vm.goToDetails = goToDetails;
 
         // public methods
 
@@ -17,17 +18,18 @@
         init();
 
         function init() {
-
             loadUsers();
-
         }
 
         function loadUsers() {
 
-            var member = tpaResourceMemberService.query(function (members) {
-                $log.info(members);
+            tpaResourceMemberService.query(function (members) {
                 vm.members = members;
             });
+        }
+        
+        function goToDetails(member){
+            $state.go('edit-user', {memberId: member._id});
         }
 
     }

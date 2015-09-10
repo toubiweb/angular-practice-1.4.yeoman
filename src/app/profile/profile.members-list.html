@@ -4,4 +4,31 @@
 
     Members: {{ vm.members.length }}
 
+    <table class="table table-bordered table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>gender</th>
+                <th>birthdate</th>
+                <th>employed</th>
+                <th>salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="link" ng-repeat="member in vm.members" ng-click="vm.goToDetails(member)">
+                <td>{{ member._id }}</td>
+                <td>{{ member.firstName }}</td>
+                <td>{{ member.lastName }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.gender }}</td>
+                <td>{{ member.birtddate }}</td>
+                <td>{{ member.employed }}</td>
+                <td>{{ member.salary }}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

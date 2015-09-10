@@ -11,16 +11,10 @@
         // states configuration
         $stateProvider
             .state('edit-user', {
-                url: "/:firstName",
+                url: "/edit-user/:memberId",
                 templateUrl: 'app/profile/profile.user-edit.html',
                 controller: 'TpaProfileUserEditController',
-                controllerAs: 'vm',
-                params: {
-                    firstName: {
-                        // default value
-                        value: 'Peter'
-                    }
-                }
+                controllerAs: 'vm'
             })
             .state('edit-password', {
                 url: "/profile/password/edit/",
@@ -32,7 +26,7 @@
                     firstName: 'Peter'
                 }
             }).state('view-members', {
-                url: "/profile/members",
+                url: "/",
                 templateUrl: 'app/profile/profile.members-list.html',
                 controller: 'TpaProfileMembersListController',
                 controllerAs: 'vm'

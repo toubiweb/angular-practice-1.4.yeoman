@@ -17,6 +17,7 @@
         vm.getAgeInYears = getAgeInYears;
         vm.employedUpdated = employedUpdated;
         vm.submit = submit;
+        vm.getMinSalary = getMinSalary;
 
         // initialization
         init();
@@ -27,6 +28,7 @@
             reset();
 
             $scope.$on('$destroy', onDestroy);
+
         }
 
         function onDestroy() {
@@ -43,15 +45,15 @@
                 firstName: $stateParams.firstName,
                 lastName: null,
                 email: 'john.smith@sqli.com',
-                birthdate: moment("01/07/1980", "DD/MM/YYYY").toDate(),
+                birthdate: moment("01/07/1996", "DD/MM/YYYY").toDate(),
                 gender: 'male',
                 employed: true,
-                salary: 10000
+                salary: 9000
             };
         }
 
         function getAgeInYears() {
-            if (!vm.user || vm.user.birthdate) {
+            if (!vm.user || !vm.user.birthdate) {
                 return null;
             }
 
@@ -82,6 +84,19 @@
                     firstName: vm.user.firstName
                 });
             }
+        }
+
+        function getMinSalary() {
+            var age = getAgeInYears();
+
+            var minSalary;
+            if (age && age > 20) {
+                minSalary = 10000;
+            } else {
+                minSalary = 8000;
+            }
+            
+            return minSalary;
         }
 
     }

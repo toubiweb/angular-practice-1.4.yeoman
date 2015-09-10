@@ -35,7 +35,7 @@ function browserSyncInit(baseDir, browser) {
      */
     // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', proxyHost: 'jsonplaceholder.typicode.com'});
 
-    var proxy = proxyMiddleware('/api/members', {
+    var proxy = proxyMiddleware('/api', {
         target: 'http://10.42.2.177:9999'
     });
     server.middleware = proxy;

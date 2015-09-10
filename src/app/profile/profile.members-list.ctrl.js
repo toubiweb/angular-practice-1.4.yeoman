@@ -26,6 +26,7 @@
 
             var member = tpaResourceMemberService.query(function (members) {
                 $log.info(members);
+                vm.members = members;
             });
         }
 

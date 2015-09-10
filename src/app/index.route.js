@@ -31,7 +31,15 @@
                     // additional paramter (not in url) & default value
                     firstName: 'Peter'
                 }
+            }).state('view-members', {
+                url: "/profile/members",
+                templateUrl: 'app/profile/profile.members-list.html',
+                controller: 'TpaProfileMembersListController',
+                controllerAs: 'vm'
             });
+        
+        
+        
     }
 
 })();

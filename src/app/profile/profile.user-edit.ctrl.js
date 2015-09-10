@@ -51,7 +51,7 @@
         }
 
         function getAgeInYears() {
-            if (!vm.user || vm.user.birthdate) {
+            if (!vm.user || !vm.user.birthdate) {
                 return null;
             }
 

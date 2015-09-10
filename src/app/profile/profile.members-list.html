@@ -2,19 +2,19 @@
 
     <div tpa-navbar active-menu="'view-members'"></div>
 
-    Members: {{ vm.members.length }}
+    <h2>Members ({{ vm.members.length }})</h2>
    
     <table class="table table-bordered table-striped table-hover table-condensed">
         <thead>
             <tr>
-                <th>id</th>
-                <th>firstName</th>
-                <th>lastName</th>
-                <th>email</th>
-                <th>gender</th>
-                <th>birthdate</th>
-                <th>employed</th>
-                <th>salary</th>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Employed</th>
+                <th>Salary</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                 <td>{{ member.lastName }}</td>
                 <td>{{ member.email }}</td>
                 <td>{{ member.gender }}</td>
-                <td>{{ member.birtddate }}</td>
+                <td>{{ member.birthdate | date }}</td>
                 <td>{{ member.employed }}</td>
                 <td>{{ member.salary }}</td>
             </tr>

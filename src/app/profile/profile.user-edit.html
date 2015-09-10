@@ -1,22 +1,21 @@
 <div class="container profile-user-edit">
 
-    <div tpa-navbar active-menu="'edit-user'"></div>
+    <div tpa-navbar active-menu="vm.activeMenu"></div>
    
-    <div>
-        <a class="link" ui-sref="edit-password({firstName: vm.user.firstName})">Edit current user's password</a>
-    </div>
-    <div>
-        <a class="link" ui-sref="edit-user({firstName: 'Mehdi'})">Edit Mehdi's user profile</a>
-    </div>
-    <div>
-        <a class="link" ui-sref="edit-user({firstName: 'Anne'})">Edit Anne's user profile</a>
+    <div ng-if="vm.mode === 'edition'">
+        <a class="link" ui-sref="edit-password({firstName: vm.user.firstName})">Change password</a>
     </div>
     
     <div class="page">
         <div class="row">
 
             <div class="col-md-8">
-                <h1>Edit user profile</h1>
+               
+               <div ng-switch on="vm.mode">
+                    <h1 ng-switch-when="creation">Create member</h1>
+                    <h1 ng-switch-when="edition">Edit member "{{ vm.getFullName() }}"</h1>
+               </div>
+               
                 <form name="userForm" novalidate>
                     <div class="row">
                         <div class="col-md-4">
@@ -63,7 +62,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Birthdate</label>
-                                <input name="birthdate" class="form-control" type="text" ng-model="vm.user.birthdate" bs-datepicker data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="1">
+                                <input name="birthdate" class="form-control" type="text" ng-model="vm.user.birthdate" bs-datepicker data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="1" data-date-type="iso">
                                 <div tpa-error-messages form="userForm" attribute-name="birthdate"></div>
                             </div>
                         </div>
@@ -90,14 +89,19 @@
                         </div>
                     </div>
                     <div class="row text-center actions-bar">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <a ng-click="vm.submit(userForm)" class="btn btn-lg btn-ok large outline">
                                 <i class="glyphicon glyphicon-check"></i> Save
                             </a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <a ng-click="vm.reset();userForm.$setPristine();userForm.$setUntouched();" class="btn btn-lg btn-cancel large outline">
                                 <i class="glyphicon glyphicon-remove"></i> Reset
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a ng-click="vm.remove()" class="btn btn-lg btn-cancel large outline">
+                                <i class="glyphicon glyphicon-trash"></i> Remove
                             </a>
                         </div>
                     </div>

@@ -18,6 +18,10 @@
         vm.employedUpdated = employedUpdated;
         vm.submit = submit;
         vm.getMinSalary = getMinSalary;
+        // 'edition' or 'creation'
+        vm.mode;
+        vm.activeMenu;
+        vm.remove = remove;
 
         // initialization
         init();
@@ -36,12 +40,17 @@
         }
 
         function getFullName() {
-            return vm.user.firstName + ' ' + vm.user.lastName;
+            if (vm.user) {
+                return vm.user.firstName + ' ' + vm.user.lastName;
+            }
         }
 
         function reset() {
 
             if ($stateParams.memberId) {
+
+                vm.mode = 'edition';
+                vm.activeMenu = 'edit-user';
 
                 tpaResourceMemberService.get({
                     memberId: $stateParams.memberId
@@ -58,12 +67,10 @@
                 });
 
             } else {
-                // display an error message
-                toastr.error('Invalid URL.');
-                $timeout(function () {
-                    // redirect to list after 2s timeout
-                    $state.go('view-members');
-                }, 2000);
+
+                vm.mode = 'creation';
+                vm.activeMenu = 'create-user';
+                vm.user = {};
             }
 
         }
@@ -95,11 +102,66 @@
             userForm.$setSubmitted();
 
             if (userForm.$valid) {
-                toastr.success('User successfully saved.');
-                $state.go('edit-password', {
-                    firstName: vm.user.firstName
-                });
+
+                if (vm.mode === 'edition') {
+
+                    tpaResourceMemberService.update({
+                        memberId: vm.user._id
+                    }, vm.user, function (member) {
+                        vm.user = member;
+                        // display an success message
+                        toastr.success('User successfully saved.');
+
+                        $timeout(function () {
+                            // redirect to list after 2s timeout
+                            $state.go('view-members');
+                        }, 2000);
+
+                    }, function (err) {
+                        $log.error(err);
+                        // display an error message
+                        toastr.error('An error occured while saving user.');
+                    });
+                } else {
+
+                    tpaResourceMemberService.save(vm.user, function (member) {
+                        vm.user = member;
+                        // display an success message
+                        toastr.success('User successfully saved.');
+
+                        $timeout(function () {
+                            // redirect to list after 2s timeout
+                            $state.go('view-members');
+                        }, 2000);
+
+                    }, function (err) {
+                        $log.error(err);
+                        // display an error message
+                        toastr.error('An error occured while saving user.');
+                    });
+                }
             }
+        }
+
+        function remove() {
+            tpaResourceMemberService.remove({
+                    memberId: vm.user._id
+                },
+                function (member) {
+                    // display an success message
+                    toastr.success('User successfully removed.');
+
+                    $timeout(function () {
+                        // redirect to list after 2s timeout
+                        $state.go('view-members');
+                    }, 2000);
+
+                },
+                function (err) {
+                    $log.error(err);
+                    // display an error message
+                    toastr.error('An error occured while removing user.');
+                });
         }
 
         function getMinSalary() {

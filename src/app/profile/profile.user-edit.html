@@ -74,7 +74,8 @@
                         <div class="col-md-2" ng-show="vm.user.employed">
                             <div class="form-group">
                                 <label class="control-label">Salary</label>
-                                <input name="salary" class="form-control" type="number" ng-model="vm.user.salary">
+                                <input name="salary" class="form-control" type="number" ng-model="vm.user.salary" tpa-salary-validator>
+                                <div tpa-error-messages form="userForm" attribute-name="salary"></div>
                             </div>
                         </div>
                     </div>

@@ -8,20 +8,21 @@
             templateUrl: 'app/form/tpa-error-messages.directive.html',
             controllerAs: 'vm',
             scope: {
-                formName: '@',
+                form: '=',
                 attributeName: '@'
             },
             bindToController: true,
-            controller: TpaErrorMessagesController
+            controller: TpaErrorMessagesController,
+            transclude: true
         };
     }
-    
+
     function TpaErrorMessagesController() {
 
         var vm = this;
 
         // scope attributes
-        
+
         // scope methods
 
         // init method
@@ -34,5 +35,5 @@
 
         return vm;
     }
-    
+
 })();

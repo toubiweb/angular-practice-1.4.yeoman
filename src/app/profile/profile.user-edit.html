@@ -20,11 +20,12 @@
                         <div class="col-md-4">
                             <div class="form-group required">
                                 <label class="control-label">First name</label>
-                                <input name="firstName" required minlength="2" class="form-control" type="text" ng-model="vm.user.firstName">
+                                <input name="firstName" required ng-minlength="2" class="form-control" type="text" ng-model="vm.user.firstName">
                                 <!-- using attribute directives -->
-                                <div ng-messages="userForm.firstName.$error" role="alert" class="error" ng-if="userForm.firstName.$touched || userForm.$submitted">
-                                    <div ng-message="required">First name is required.</div>
-                                    <div ng-message="minlength">First name should contains at least 2 characters.</div>
+
+                                <div tpa-error-messages form="userForm" attribute-name="firstName">
+                                    <!-- override default message -->
+                                    <div class="error" ng-message="minlength">Too short first name: 2 characters mini.</div>
                                 </div>
                             </div>
                         </div>
@@ -32,9 +33,10 @@
                             <div class="form-group required">
                                 <label class="control-label">Last name</label>
                                 <input name="lastName" required minlength="3" class="form-control" type="text" ng-model="vm.user.lastName">
-                                <div ng-messages="userForm.lastName.$error" role="alert" class="error" ng-if="userForm.lastName.$touched || userForm.$submitted">
-                                    <div ng-message="required">Last name is required.</div>
-                                    <div ng-message="minlength">Last name should contains at least 3 characters.</div>
+
+                                <div tpa-error-messages form="userForm" attribute-name="lastName">
+                                    <!-- override default message -->
+                                    <div class="error" ng-message="minlength">Too short: 3 characters mini.</div>
                                 </div>
                             </div>
                         </div>
@@ -42,10 +44,7 @@
                             <div class="form-group required">
                                 <label class="control-label">Email</label>
                                 <input name="email" required class="form-control" type="email" ng-model="vm.user.email">
-                                <div ng-messages="userForm.email.$error" role="alert" class="error" ng-if="userForm.lastemailName.$touched || userForm.$submitted">
-                                    <div ng-message="required">Email is required.</div>
-                                    <div ng-message="email">Email is invalid.</div>
-                                </div>
+                                <div tpa-error-messages form="userForm" attribute-name="email"></div>
                             </div>
                         </div>
                     </div>
@@ -63,9 +62,7 @@
                             <div class="form-group">
                                 <label class="control-label">Birthdate</label>
                                 <input name="birthdate" class="form-control" type="text" ng-model="vm.user.birthdate" bs-datepicker data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="1">
-                                <div ng-messages="userForm.birthdate.$error" role="alert" class="error" ng-if="userForm.birthdate.$touched || userForm.$submitted">
-                                    <div ng-message="date">Birthdate is invalid.</div>
-                                </div>
+                                <div tpa-error-messages form="userForm" attribute-name="birthdate"></div>
                             </div>
                         </div>
                         <div class="col-md-2">

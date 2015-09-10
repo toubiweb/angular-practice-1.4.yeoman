@@ -18,14 +18,28 @@
         init();
 
         function init() {
-          
+
             ngModelCtrl.$validators.salary = function () {
-                if (ngModelCtrl.$viewValue < 100) {
+
+                var salaryMin;
+                if ($scope.age && $scope.age >= 20) {
+                    salaryMin = 10000;
+                } else {
+                    salaryMin = 8000;
+                }
+
+                if (parseFloat(ngModelCtrl.$viewValue) < salaryMin) {
                     return false;
                 } else {
                     return true;
                 }
             };
+
+            $scope.$watch(function(){
+                return $scope.age;
+            }, function (newAge, oldAge) {
+                ngModelCtrl.$$parseAndValidate();
+            });
         }
 
     }

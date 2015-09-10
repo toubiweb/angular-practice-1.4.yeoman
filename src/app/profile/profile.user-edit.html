@@ -72,10 +72,18 @@
                             </div>
                         </div>
                         <div class="col-md-2" ng-show="vm.user.employed">
-                            <div class="form-group">
+                       <!--     <div class="form-group">
                                 <label class="control-label">Salary</label>
-                                <input name="salary" class="form-control" type="number" ng-model="vm.user.salary" tpa-salary-validator>
+                                <input name="salary" class="form-control" type="number" ng-model="vm.user.salary" tpa-salary-validator age="vm.getAgeInYears()">
                                 <div tpa-error-messages form="userForm" attribute-name="salary"></div>
+                            </div>-->
+                            
+                           <div class="form-group">
+                                <label class="control-label">Salary 2</label>
+                                <input name="salary" class="form-control" type="number" ng-model="vm.user.salary" ng-min="vm.getMinSalary()">
+                                <div tpa-error-messages form="userForm" attribute-name="salary">
+                                    <div class="error" ng-message="min">Invalid min value.</div>
+                                </div>
                             </div>
                         </div>
                     </div>

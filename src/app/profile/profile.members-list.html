@@ -3,7 +3,7 @@
     <div tpa-navbar active-menu="'view-members'"></div>
 
     Members: {{ vm.members.length }}
-
+   
     <table class="table table-bordered table-striped table-hover table-condensed">
         <thead>
             <tr>
@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="link" ng-repeat="member in vm.members" ng-click="vm.goToDetails(member)">
+            <tr class="member-row link" ng-repeat="member in vm.members" ng-click="vm.goToDetails(member)">
                 <td>{{ member._id }}</td>
                 <td>{{ member.firstName }}</td>
                 <td>{{ member.lastName }}</td>

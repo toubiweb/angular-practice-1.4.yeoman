@@ -11,6 +11,7 @@
             scope: {
                 password: '='
             },
+            transclude: true,
             bindToController: true,
             controller: TpaRobustnessBarController
         };

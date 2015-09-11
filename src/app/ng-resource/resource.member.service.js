@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('tpAngular.form').factory('tpaResourceMemberService', tpaResourceMemberService);
+    angular.module('tpAngular').factory('tpaResourceMemberService', tpaResourceMemberService);
 
     function tpaResourceMemberService($resource) {
 

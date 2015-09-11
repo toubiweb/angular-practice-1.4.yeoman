@@ -30,10 +30,12 @@
                 templateUrl: 'app/profile/profile.members-list.html',
                 controller: 'TpaProfileMembersListController',
                 controllerAs: 'vm'
+            }).state('login', {
+                url: "/login",
+                templateUrl: 'app/login/login.html',
+                controller: 'TpaLoginController',
+                controllerAs: 'vm'
             });
-        
-        
-        
     }
 
 })();

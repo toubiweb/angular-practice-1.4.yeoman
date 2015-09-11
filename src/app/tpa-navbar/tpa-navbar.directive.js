@@ -1,41 +1,39 @@
 (function () {
-        'use strict';
+    'use strict';
 
-        angular.module('tpAngular').directive('tpaNavbar', tpaNavbar);
-        /** @ngInject */
-        function tpaNavbar() {
-            return {
-                templateUrl: 'app/tpa-navbar/tpa-navbar.html',
-                controllerAs: 'vm',
-                scope: {
-                    activeMenu: '='
-                },
-                bindToController: true,
-                controller: TpaNavbarController
-            };
-        }
+    angular.module('tpAngular').directive('tpaNavbar', tpaNavbar);
+    /** @ngInject */
+    function tpaNavbar() {
+        return {
+            templateUrl: 'app/tpa-navbar/tpa-navbar.html',
+            controllerAs: 'vm',
+            scope: {
+                activeMenu: '='
+            },
+            bindToController: true,
+            controller: TpaNavbarController
+        };
+    }
 
-        /** @ngInject */
-        function TpaNavbarController() {
+    /** @ngInject */
+    function TpaNavbarController(Auth) {
 
-           // view model
-            var vm = this;
+        // view model
+        var vm = this;
 
-            // initialization
-            init();
+        // initialization
+        init();
 
-            // public attributes
+        // public attributes
+        vm.user = Auth.getCurrentUser()
 
-            // public methods
+        // public methods
 
-            // private methods
+        // private methods
 
-            function init() {
+        function init() {}
 
-
-            }
-
-            return vm;
-        }
+        return vm;
+    }
 
 }());

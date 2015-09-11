@@ -1,8 +1,7 @@
 <nav class="tpa-navbar navbar navbar-static-top navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li ng-class="{ active: vm.activeMenu === 'view-members' }"><a ui-sref="view-members">View members</a>
                     </li>
@@ -10,11 +9,14 @@
                     </li>
                     <li ng-if="vm.activeMenu !== 'edit-user'" ng-class="{ active: vm.activeMenu === 'create-user' }"><a ui-sref="edit-user">Create member</a>
                     </li>
+                    <li ng-class="{ active: vm.activeMenu === 'login' }"><a ui-sref="login">Login</a>
+                    </li>
                 </ul>
 
-                <!--      <ul class="nav navbar-nav navbar-right text">
-        <li>Welcome user 'TODO'.</li>
-      </ul>-->
+                <ul class="nav navbar-nav navbar-right text">
+                    <li>Welcome user {{ vm.user }}.</li>
+                </ul>
             </div>
         </div>
+    </div>
 </nav>

@@ -14,6 +14,7 @@
         , 'toastr' // angular notifications: https://github.com/Foxandxss/angular-toastr
         , 'tpAngular.profile' // profile
         , 'tpAngular.form' // form
+        , 'tpAngular.login' // login
         ,'validation.match'
     ]);
 

@@ -35,6 +35,10 @@
                 templateUrl: 'app/login/login.html',
                 controller: 'TpaLoginController',
                 controllerAs: 'vm'
+            }).state('logout', {
+                url: "/logout",
+                controller: 'TpaLogoutController',
+                controllerAs: 'vm'
             });
     }
 

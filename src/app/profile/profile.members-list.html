@@ -2,12 +2,12 @@
 
     <div tpa-navbar active-menu="'view-members'"></div>
 
-    <h2>Members ({{ vm.members.length }})</h2>
-   
+    <h2>Members (from {{ vm.getFirstHumanIndex() }} to {{ vm.getLastHumanIndex() }} of {{ vm.members.length }})</h2>
+
     <table class="table table-bordered table-striped table-hover table-condensed">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Email</th>
@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="member-row link" ng-repeat="member in vm.members" ng-click="vm.goToDetails(member)">
+            <tr class="member-row link" ng-repeat="member in vm.members | limitTo:vm.itemsByPage:vm.getFirstIndex()" ng-click="vm.goToDetails(member)">
                 <td>{{ member._id }}</td>
                 <td>{{ member.firstName }}</td>
                 <td>{{ member.lastName }}</td>
@@ -29,6 +29,32 @@
                 <td>{{ member.salary }}</td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" class="pagination-container">
+                    <nav class="text-center">
+                        <ul class="pagination">
+                            <li ng-class="{ 'disabled': vm.currentPage <= 1}">
+                                <a ng-disabled="vm.currentPage <= 1" class="btn btn-small btn-primary" ng-click="vm.goToPreviousPage()">
+                                             &laquo; Previous
+                                        </a>
+                            </li>
+                            <li class="active">
+                                <a href="#">{{ vm.currentPage }}/{{vm.getTotalPages()}}</a>
+                            </li>
+                            <li ng-class="{ 'disabled': vm.currentPage >= vm.getTotalPages()}">
+                                <a class="btn btn-small btn-primary" ng-click="vm.goToNextPage()">
+                                             Next &raquo;
+                                        </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </tfoot>
     </table>
-
+    <div class="pages">
+        Page size:
+        <input ng-model="vm.itemsByPage" />
+    </div>
 </div>

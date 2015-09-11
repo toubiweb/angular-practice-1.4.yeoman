@@ -4,6 +4,27 @@
 
     <h2>Members (from {{ vm.getFirstHumanIndex() }} to {{ vm.getLastHumanIndex() }} of {{ vm.members.length }})</h2>
 
+    <p>
+        Filtered: {{ vm.filteredMembers.length }}
+    </p>
+    <p>
+        Total: {{ vm.members.length }}
+    </p>
+
+    <form novalidate>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="control-label">First name: </label>
+                <input ng-model="vm.nonstrictFilter.firstName" />
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label">Gender</label>
+                <select ng-model="vm.strictFilter.gender" ng-options="gender.id as gender.label for gender in vm.genderOptions" >
+                </select>
+            </div>
+        </div>
+    </form>
+
     <table class="table table-bordered table-striped table-hover table-condensed">
         <thead>
             <tr>
@@ -18,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="member-row link" ng-repeat="member in vm.members | limitTo:vm.itemsByPage:vm.getFirstIndex()" ng-click="vm.goToDetails(member)">
+            <tr class="member-row link" ng-repeat="member in vm.filteredMembers = (vm.members | filter:vm.strictFilter:true | filter:vm.nonstrictFilter ) | orderBy:'firstName':true | limitTo:vm.itemsByPage:vm.getFirstIndex()" ng-click="vm.goToDetails(member)">
                 <td>{{ member._id }}</td>
                 <td>{{ member.firstName }}</td>
                 <td>{{ member.lastName }}</td>

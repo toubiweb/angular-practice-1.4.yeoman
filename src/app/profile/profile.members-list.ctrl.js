@@ -3,7 +3,7 @@
 
     angular.module('tpAngular.profile').controller('TpaProfileMembersListController', TpaProfileMembersListController);
 
-    function TpaProfileMembersListController($state, toastr, tpaResourceMemberService) {
+    function TpaProfileMembersListController($scope, $state, toastr, tpaResourceMemberService) {
 
         // view model
         var vm = this;
@@ -12,6 +12,19 @@
         vm.members = [];
         vm.itemsByPage = 5;
         vm.currentPage = 1;
+        vm.filter = {};
+        vm.genderOptions = [
+            {
+                id: undefined,
+                label: 'All'
+            }, {
+                id: 'male',
+                label: 'Male'
+            }, {
+                id: 'female',
+                label: 'Female'
+            }
+        ];
 
         // public methods
         vm.goToDetails = goToDetails;
@@ -27,6 +40,12 @@
 
         function init() {
             loadUsers();
+
+            $scope.$watch(function () {
+                return vm.filter;
+            }, function (newFilter, oldFilter) {
+                vm.currentPage = 1;
+            }, true);
         }
 
         function loadUsers() {
@@ -46,8 +65,8 @@
         }
 
         function getTotalPages() {
-            if (vm.members && vm.members.length) {
-                return Math.ceil(vm.members.length / vm.itemsByPage);
+            if (vm.filteredMembers && vm.filteredMembers.length) {
+                return Math.ceil(vm.filteredMembers.length / vm.itemsByPage);
             } else {
                 return null;
             }
@@ -83,6 +102,5 @@
                 vm.currentPage--;
             }
         }
-
     }
 }());

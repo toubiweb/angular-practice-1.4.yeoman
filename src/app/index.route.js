@@ -14,7 +14,8 @@
                 url: "/edit-user/:memberId",
                 templateUrl: 'app/profile/profile.user-edit.html',
                 controller: 'TpaProfileUserEditController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                roles: ['admin']
             })
             .state('edit-password', {
                 url: "/profile/password/edit/",
@@ -29,7 +30,8 @@
                 url: "/",
                 templateUrl: 'app/profile/profile.members-list.html',
                 controller: 'TpaProfileMembersListController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                roles: ['admin', 'user']
             }).state('login', {
                 url: "/login",
                 templateUrl: 'app/login/login.html',

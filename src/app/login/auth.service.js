@@ -54,6 +54,9 @@
                 $cookieStore.remove('token');
                 currentUser = {};
             },
+            hasRole: function (role) {
+                return currentUser.role === role;
+            },
 
             /**
              * Create a new user

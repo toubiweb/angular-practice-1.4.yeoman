@@ -15,7 +15,6 @@
         };
     }
 
-    /** @ngInject */
     function TpaNavbarController(Auth) {
 
         // view model

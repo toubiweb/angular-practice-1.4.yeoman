@@ -49,17 +49,19 @@
         };
     })
 
-    .run(function ($rootScope, $location, Auth) {
-        // Redirect to login if route requires auth and you're not logged in
-        $rootScope.$on('$stateChangeStart', function (event, next) {
-            Auth.isLoggedInAsync(function (loggedIn) {
-                if (next.authenticate && !loggedIn) {
-                    event.preventDefault();
-                    $location.path('/login');
-                }
-            });
+   
+.run(function ($rootScope, $location, Auth) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        Auth.isLoggedInAsync(function (loggedIn) {
+            if ((next.authenticate || next.roles) && !loggedIn) {
+                $location.path('/login');
+            }else if (next.roles && next.roles.indexOf(Auth.getCurrentUser().role) === -1) {
+                $location.path('/');
+            }
         });
     });
+});
 
 
 })();
